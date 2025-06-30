@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import { addToStoredReadList } from '../utility/addToDB';
 
 const BookDetail = () => {
 
@@ -14,8 +15,8 @@ const BookDetail = () => {
     const { bookId: currentBookId, image, bookName, author, review, category, totalPages, publisher, yearOfPublishing, rating } = book;
 
 
-    const HandleMarkAsRead = () => {
-         
+    const HandleMarkAsRead = (id) => {
+         addToStoredReadList(id);
     }
 
     return (
@@ -57,7 +58,7 @@ const BookDetail = () => {
                 </div>
                 <div className="divider"></div>
 
-                <button onClick={HandleMarkAsRead} className="btn btn-outline btn-accent mr-4">Mark as Read</button>
+                <button onClick={() => HandleMarkAsRead(bookId)} className="btn btn-outline btn-accent mr-4">Mark as Read</button>
                 <button className="btn btn-accent">Add to WishList</button>
 
             </div>
