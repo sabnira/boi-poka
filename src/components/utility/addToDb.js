@@ -14,15 +14,18 @@ const getStoredReadList = () => {
 const addToStoredReadList = (id) => {
     const storedList = getStoredReadList();
     if(storedList.includes(id)){
-        console.log(id, 'already exist');
+        
+        alert(id, 'already exist');
+
+        toast('This book is already added to the read list')
+         
     }
     else{
         storedList.push(id);
         const storedListStr = JSON.stringify(storedList);
         localStorage.setItem('read-list', storedListStr);
 
-
-        toast('This book is already added to the read list')
+        
     }
 }
 
